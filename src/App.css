@@ -1,0 +1,225 @@
+.panic-screen,
+.results-screen {
+  min-height: 100svh;
+}
+
+.panic-screen {
+  display: grid;
+  place-items: center;
+  background: #000000;
+  padding: 24px;
+}
+
+.panic-button {
+  width: min(72vw, 340px);
+  aspect-ratio: 1;
+  border: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 28%, rgba(255, 255, 255, 0.25), transparent 26%),
+    linear-gradient(145deg, #ff3131, #b60000);
+  box-shadow:
+    0 22px 0 #650000,
+    0 34px 56px rgba(255, 0, 0, 0.28),
+    inset 0 -16px 28px rgba(62, 0, 0, 0.38);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transform: translateY(-10px);
+  transition:
+    box-shadow 160ms ease,
+    transform 160ms ease,
+    filter 160ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.panic-button:active,
+.panic-button[aria-busy='true'] {
+  box-shadow:
+    0 10px 0 #650000,
+    0 22px 42px rgba(255, 0, 0, 0.22),
+    inset 0 -10px 20px rgba(62, 0, 0, 0.42);
+  transform: translateY(2px);
+}
+
+.panic-button:focus-visible {
+  outline: 4px solid #ffffff;
+  outline-offset: 10px;
+}
+
+.spinner {
+  width: 27%;
+  aspect-ratio: 1;
+  border: 8px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 800ms linear infinite;
+}
+
+.results-screen {
+  background: #f6f7f8;
+  color: #161719;
+  padding: calc(env(safe-area-inset-top) + 18px) 16px
+    calc(env(safe-area-inset-bottom) + 24px);
+}
+
+.back-button {
+  min-height: 40px;
+  border: 1px solid #d7dbe0;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #161719;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+.back-button:focus-visible,
+.bathroom-result button:focus-visible,
+.error-panel button:focus-visible {
+  outline: 3px solid #c40000;
+  outline-offset: 3px;
+}
+
+.location-status {
+  color: #4c5560;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin: 12px 0 0;
+}
+
+.google-error,
+.error-panel .google-error {
+  color: #7a1e1e;
+  font-size: 0.82rem;
+  font-weight: 700;
+  margin: 8px 0 0;
+}
+
+.results-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.bathroom-result {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  background: #ffffff;
+  border: 1px solid #e1e4e8;
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.bathroom-result h2 {
+  color: #161719;
+  font-size: 1rem;
+  line-height: 1.2;
+  margin: 0 0 4px;
+}
+
+.bathroom-result p {
+  color: #666d76;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.result-actions {
+  display: grid;
+  justify-items: end;
+  gap: 8px;
+}
+
+.result-actions span {
+  color: #3f454d;
+  font-size: 0.9rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.bathroom-result button {
+  min-height: 38px;
+  border: 0;
+  border-radius: 8px;
+  background: #c40000;
+  color: #ffffff;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 800;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.bathroom-result button:disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+
+.ad-placeholder {
+  display: grid;
+  place-items: center;
+  gap: 4px;
+  min-height: 72px;
+  margin-top: 34px;
+  border: 1px dashed #c9ced6;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #68717c;
+}
+
+.ad-placeholder span {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.ad-placeholder p {
+  color: #3f454d;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.error-panel {
+  display: grid;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.error-panel p {
+  color: #161719;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.error-panel button {
+  justify-self: start;
+  min-height: 40px;
+  border: 0;
+  border-radius: 8px;
+  background: #c40000;
+  color: #ffffff;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 800;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+@keyframes spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+@media (min-width: 640px) {
+  .results-screen {
+    padding-inline: max(24px, calc((100vw - 620px) / 2));
+  }
+}
