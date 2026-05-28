@@ -15,7 +15,13 @@ const searchTypes = [
 
 const restStopSearchTerms = ['rest area', 'rest stop', 'travel plaza', 'service plaza']
 const allowedPrimaryTypes = new Set(searchTypes)
+const androidProductionBannerAdId = 'ca-app-pub-4684203752769089/7399655042'
 const androidTestBannerAdId = 'ca-app-pub-3940256099942544/6300978111'
+const useTestBannerAds =
+  import.meta.env.DEV || import.meta.env.VITE_ADMOB_TEST_ADS === 'true'
+const androidBannerAdId = useTestBannerAds
+  ? androidTestBannerAdId
+  : androidProductionBannerAdId
 const androidBannerBottomMargin = 8
 let adMobInitializePromise
 
@@ -660,11 +666,11 @@ function App() {
           if (!isActive) return
 
           await AdMob.showBanner({
-            adId: androidTestBannerAdId,
+            adId: androidBannerAdId,
             adSize: BannerAdSize.ADAPTIVE_BANNER,
             position: BannerAdPosition.BOTTOM_CENTER,
             margin: androidBannerBottomMargin,
-            isTesting: true,
+            isTesting: useTestBannerAds,
           })
         } else {
           await AdMob.removeBanner()
