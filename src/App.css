@@ -1,5 +1,6 @@
 .panic-screen,
-.results-screen {
+.results-screen,
+.privacy-screen {
   min-height: 100svh;
 }
 
@@ -49,6 +50,80 @@
 .panic-button:focus-visible {
   outline: 4px solid #ffffff;
   outline-offset: 10px;
+}
+
+.privacy-screen {
+  background: #f6f7f8;
+  color: #161719;
+  padding: calc(env(safe-area-inset-top) + 32px) 18px
+    calc(env(safe-area-inset-bottom) + 40px);
+}
+
+.privacy-policy {
+  width: min(100%, 760px);
+  margin: 0 auto;
+}
+
+.privacy-policy header {
+  border-bottom: 1px solid #dfe3e8;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+}
+
+.privacy-policy h1,
+.privacy-policy h2,
+.privacy-policy h3,
+.privacy-policy p {
+  margin: 0;
+}
+
+.privacy-policy h1 {
+  color: #111315;
+  font-size: 2.25rem;
+  line-height: 1.02;
+  max-width: 11ch;
+}
+
+.privacy-policy header p {
+  color: #5d6570;
+  font-size: 0.98rem;
+  font-weight: 700;
+  margin-top: 14px;
+}
+
+.privacy-policy section {
+  margin-top: 28px;
+}
+
+.privacy-policy h2 {
+  color: #111315;
+  font-size: 1.18rem;
+  line-height: 1.25;
+}
+
+.privacy-policy h3 {
+  color: #30363d;
+  font-size: 1rem;
+  line-height: 1.35;
+  margin-top: 16px;
+}
+
+.privacy-policy p {
+  color: #30363d;
+  font-size: 1rem;
+  line-height: 1.65;
+  margin-top: 14px;
+}
+
+.privacy-policy a {
+  color: #a60000;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.privacy-policy a:focus-visible {
+  outline: 3px solid #c40000;
+  outline-offset: 3px;
 }
 
 .spinner {
@@ -244,5 +319,14 @@
 @media (min-width: 640px) {
   .results-screen {
     padding-inline: max(24px, calc((100vw - 620px) / 2));
+  }
+
+  .privacy-screen {
+    padding-inline: 32px;
+  }
+
+  .privacy-policy h1 {
+    font-size: 3rem;
+    max-width: none;
   }
 }

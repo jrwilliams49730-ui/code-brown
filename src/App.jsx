@@ -4,6 +4,8 @@ import { Capacitor } from '@capacitor/core'
 import { Geolocation } from '@capacitor/geolocation'
 import './App.css'
 
+const privacyPath = '/privacy'
+
 const searchTypes = [
   'gas_station',
   'restaurant',
@@ -639,7 +641,109 @@ function initializeAdMob() {
   return adMobInitializePromise
 }
 
-function App() {
+function PrivacyPolicyPage() {
+  return (
+    <main className="privacy-screen">
+      <article className="privacy-policy" aria-labelledby="privacy-title">
+        <header>
+          <h1 id="privacy-title">Privacy Policy for Code Brown</h1>
+          <p>Effective Date: May 28, 2026</p>
+        </header>
+
+        <p>Code Brown is operated by Coastal Labs.</p>
+
+        <p>
+          Code Brown is a simple emergency bathroom finder app. The app uses your
+          device location only when you press the red button to find nearby places
+          that are likely to have restrooms.
+        </p>
+
+        <section>
+          <h2>Information We Use</h2>
+          <h3>Location:</h3>
+          <p>
+            Code Brown uses your approximate or precise device location only after
+            you press the button and grant location permission. Your location is
+            used to search for nearby places such as gas stations, restaurants,
+            convenience stores, grocery stores, malls, rest stops, and travel
+            plazas.
+          </p>
+          <p>
+            We do not require an account, and we do not ask for your name, email
+            address, phone number, or profile information.
+          </p>
+        </section>
+
+        <section>
+          <h2>How Location Is Used</h2>
+          <p>
+            Your location is used to request nearby place results from Google
+            services and to help open directions in Google Maps. Code Brown does
+            not intentionally store your location history on our own servers.
+          </p>
+        </section>
+
+        <section>
+          <h2>Third-Party Services</h2>
+          <p>Code Brown uses third-party services including:</p>
+          <h3>Google Places / Google Maps:</h3>
+          <p>Used to find nearby place results and open directions.</p>
+          <h3>Google AdMob:</h3>
+          <p>
+            Used to display ads on the results screen. AdMob may collect device,
+            advertising, and usage data according to Google's own policies.
+          </p>
+        </section>
+
+        <section>
+          <h2>Advertising</h2>
+          <p>
+            Code Brown may show ads on the results screen. Ads are not shown on
+            the main red-button screen. Ad providers may use device identifiers or
+            related data to serve and measure ads.
+          </p>
+        </section>
+
+        <section>
+          <h2>Data Sharing</h2>
+          <p>
+            Code Brown does not sell your personal information. Data may be
+            processed by third-party services used by the app, such as Google Maps,
+            Google Places, and Google AdMob, as needed for app functionality and
+            advertising.
+          </p>
+        </section>
+
+        <section>
+          <h2>Children's Privacy</h2>
+          <p>
+            Code Brown is not designed to collect personal information from
+            children. The app does not require accounts or user profiles.
+          </p>
+        </section>
+
+        <section>
+          <h2>Your Choices</h2>
+          <p>
+            You can deny location permission, but the app may not be able to find
+            nearby bathroom locations. You can also manage location permissions
+            through your device settings.
+          </p>
+        </section>
+
+        <section>
+          <h2>Contact</h2>
+          <p>For privacy questions, contact:</p>
+          <p>
+            <a href="mailto:jrwilliams49730@gmail.com">jrwilliams49730@gmail.com</a>
+          </p>
+        </section>
+      </article>
+    </main>
+  )
+}
+
+function BathroomFinderApp() {
   const [view, setView] = useState('panic')
   const [isLoading, setIsLoading] = useState(false)
   const [location, setLocation] = useState(null)
@@ -815,6 +919,16 @@ function App() {
       </button>
     </main>
   )
+}
+
+function App() {
+  const normalizedPath = window.location.pathname.replace(/\/+$/, '') || '/'
+
+  if (normalizedPath === privacyPath) {
+    return <PrivacyPolicyPage />
+  }
+
+  return <BathroomFinderApp />
 }
 
 export default App
